@@ -1,0 +1,10 @@
+<mat-nav-list>
+  <div class="image flexBox center centerVertical">
+    <div class="imageContainer">
+      <img src="assets/logo.png" alt="">
+    </div>
+  </div>
+  <a mat-list-item *ngFor="let link of links" routerLink="{{link.link}}" (click)="closeMenu.emit(true)" routerLinkActive="active">
+    <span>{{ link.name }}</span>
+  </a>
+</mat-nav-list>

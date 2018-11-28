@@ -1,0 +1,110 @@
+<div class="pageContainer">
+  <div class="topContainer flexBox">
+    <div class="leftSection">
+      <div class="header flexBox centerVertical">
+        <h1 class="orange">{{productValues?.name}}</h1>
+      </div>
+      <div class="infoContainer">
+        <div class="info flexBox space" *ngFor="let question of productQuestions">
+          <div class="leftColumn">
+            <span>{{question.label}}:</span>
+          </div>
+          <div class="rightColumn">
+            <span *ngIf="question.label!='PRECIO' && question.label!='SECTOR DEL PRODUCTO'">{{productValues?productValues[question.key]:'cargando...'}}</span>
+            <span *ngIf="question.label=='PRECIO' && productValues">{{ productValues[question.key] | currency}}</span>
+            <span *ngIf="question.label=='SECTOR DEL PRODUCTO' && productValues">{{ sectorMap[productValues[question.key]]}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="infoContainer">
+        <div class="info flexBox space" *ngIf="productValues?.feedingChartImage">
+          <div class="leftColumn">
+            <span>INFORMACIÓN ADICIONAL:</span>
+          </div>
+          <div class="rightColumn">
+            <button mat-button (click)="openImage('feedingChartImage',false)">VER</button>
+          </div>
+        </div>
+        <div class="info flexBox space">
+          <div class="leftColumn">
+            <span>FOTO:</span>
+          </div>
+          <div class="rightColumn">
+            <button mat-button (click)="openImage('image',true)">VER</button>
+          </div>
+        </div>
+        <div class="info counter flexBox space centerVertical">
+          <div class="leftColumn">
+            <span>INVENTARIO:</span>
+          </div>
+          <div class="rightColumn">
+            <app-counter [value]="productInventory" (valueChange)="inventoryChange($event)" *ngIf="authService.isMaster"></app-counter>
+            <h1>{{productInventory?productInventory:0}} pzs</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rightSection">
+      <div class="controlsContainer flexBox space">
+        <div class="buttons flexBox column space startVertical">
+          <button mat-button  *ngIf="!authService.isMaster && !isInList" (click)="openAddProduct()">AGREGAR A ORDEN</button>
+          <button mat-button  *ngIf="!authService.isMaster && isInList" (click)="removeFromList()">ELIMINAR DE ORDEN</button>
+          <button mat-button  *ngIf="isProvider && !isInRequestList" (click)="openAddProduct(true)">AGREGAR A SOLICITUD</button>
+          <button mat-button  *ngIf="isProvider && isInRequestList" (click)="removeFromList(true)">ELIMINAR DE SOLICITUD</button>
+
+          <button mat-button  *ngIf="authService.isMaster" (click)="openUpdateProduct()">EDITAR PRODUCTO</button>
+          <button mat-button class="orange"  *ngIf="authService.isMaster" (click)="deleteProduct()">ELIMINAR PRODUCTO</button>
+        </div>
+        <div class="productImageContainer flexBox column centerVertical center">
+          <div class="qrContainer flexBox column centerVertical center">
+            <div class="qrCode">
+              <qrcode [qrdata]="productValues?.productCode" [level]="'M'" [usesvg]="true"></qrcode>
+            </div>
+            <div class="code flexBox center">
+              <span>{{productValues?.productCode}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pointsContainer flexBox column centerVertical center">
+        <h1>{{productValues?productValues.points:'0'}}</h1>
+        <h2>PUNTOS<span *ngIf="productValues.isReward">QUE CUESTA</span></h2>
+      </div>
+      <div class="productImageContainer">
+        <img [src]="productImageUrl+productValues?.image" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="tablesContainer" *ngIf="this.authService.isMaster">
+    <div class="tableContainer">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>HISTORIAL DE PEDIDOS DE ALMACENES</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="distributorsOrdersTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewProductOrder($event)"></app-table>
+    </div>
+    <div class="tableContainer">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>HISTORIAL DE PEDIDOS DE VETERINARIOS</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="veterinariesOrdersTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewProductOrder($event)"></app-table>
+    </div>
+    <div class="tableContainer">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>HISTORIAL DE PEDIDOS DE CLIENTES</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="clientsOrdersTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewProductOrder($event)"></app-table>
+    </div>
+  </div>
+</div>

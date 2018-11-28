@@ -1,0 +1,26 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1>AFILIAR VETERINARIO</h1>
+  </div>
+  <div class="pageContent flexBox">
+    <div class="leftContainer flexBox column centerVertical center">
+      <app-form
+      #codeForm
+      [questions]="codeQuestions"
+      [oneCol]="true"
+      [submitText]="BUSCAR"
+      (onSubmit)="linkCode($event)"
+      [errorMessage]="errorMessage"
+      [isLoading]="isLoading"></app-form>
+    </div>
+    <div class="rightContainer">
+      <div class="scannerContainer">
+        <app-qrscanner (codeDetected)="qrCodeDetected($event)" [isLoadingCode]="isLoading"></app-qrscanner>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <p>Angular version: {{ ngVersion }}</p> -->

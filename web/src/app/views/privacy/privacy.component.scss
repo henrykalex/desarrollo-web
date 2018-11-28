@@ -1,0 +1,31 @@
+@import "../../../style/variables";
+.pageContainer{
+
+  .pageContent{
+    .privacyContainer{
+      width: 60%;
+      h1{
+        margin: 1em 0;
+        font-size: 1.75em;
+        font-weight: 600;
+      }
+      .content{
+        text-align: justify;
+        margin: 1em 0;
+        h2{
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .pageContainer{
+
+    .pageContent{
+      .privacyContainer{
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<div class="pageContainer pageStartContainer">
+  <div class="privacyHeader flexBox center centerVertical">
+    <div class="privacy">
+      <a mat-button routerLink="/privacidad">
+        <span>CONSULTA NUESTRO | </span>
+        <span>AVISO DE PRIVACIDAD</span>
+      </a>
+    </div>
+  </div>
+  <div class="pageHeader flexBox center centerVertical">
+    <div class="imageContainer">
+      <img src="assets/logo.png" alt="IRON-DOG">
+    </div>
+  </div>
+  <div class="pageContent flexBox center">
+    <div class="formContainer flexBox column center centerVertical">
+      <p>Bienvenido al portal de Iron Dog. Regístrate o Ingresa con tu Usuario y Contraseña.</p>
+      <p>Recuerda guardar tu información de manera segura y leer nuestro Aviso de Privacidad.</p>
+      <app-form
+      [questions]="loginQuestions"
+      [oneCol]="true"
+      [submitText]="ENTRAR"
+      (onSubmit)="login($event)"
+      [errorMessage]="errorMessage"
+      [isLoading]="isLoading"></app-form>
+      <button mat-button type="button" [routerLink]="['/registro']">
+        <div class="buttonInfo flexBox column centerVertical">
+          <span>¿No tienes cuenta?</span>
+          <span>Regístrate</span>
+        </div>
+      </button>
+      <button mat-button type="button" [routerLink]="['/registro','distribuidor']">
+        <div class="buttonInfo flexBox column centerVertical">
+          <span>¿Quieres ser un distribuidor?</span>
+          <span>Envíanos una solicitud de registro</span>
+        </div>
+      </button>
+      <button mat-button type="button" [routerLink]="['/registro','veterinario']">
+        <div class="buttonInfo flexBox column centerVertical">
+          <span>¿Quieres ser veterinario?</span>
+          <span>Envíanos una solicitud de registro</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

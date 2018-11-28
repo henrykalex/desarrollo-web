@@ -1,0 +1,19 @@
+@import "../../../../style/variables";
+mat-form-field{
+  .mat-input-flex.mat-form-field-flex{
+      background-color: $blue;
+  }
+}
+.productsListContainer{
+  width: 100%;
+  padding: 15%;
+
+  .productsList{
+    width: 100%;
+    .product{
+      width: 100%;
+      padding: 0.5em 1em;
+      background-color: $black-blue
+    }
+  }
+}

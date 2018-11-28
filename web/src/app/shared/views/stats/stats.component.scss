@@ -1,0 +1,67 @@
+@import "../../../../style/variables";
+.pageContainer{
+  .pageHeader{
+
+  }
+  .pageContent{
+    .dateSelectorContainer{
+      background-color: $blue;
+    }
+    .filtersContainer{
+      background-color: $blue;
+      padding: 1em;
+      .filters{
+        form{
+          select{
+            flex-basis: 20%;
+          }
+        }
+      }
+    }
+    .statsContainer{
+      padding: 5% 10%;
+      border-bottom: 1px solid $black-blue;
+      h1{
+        margin-bottom: 5em;
+      }
+      .stats{
+        width: 100%;
+        .stat{
+          span.number{
+            font-size: 3em;
+          }
+        }
+      }
+      .statsButtonContainer{
+        margin-top: 2em;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .pageContainer{
+    .pageHeader{
+
+    }
+    .pageContent{
+      .dateSelectorContainer{
+        padding: 1em;
+        .dateSelector{
+          form{
+            flex-wrap: wrap;
+            mat-form-field{
+              width: 100%;
+            }
+          }
+        }
+      }
+      .filtersContainer{
+        .filters{
+          form{
+            flex-wrap: wrap;
+          }
+        }
+      }
+    }
+  }
+}

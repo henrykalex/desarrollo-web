@@ -1,0 +1,58 @@
+<div class="fileUploaderContainer">
+  <div class="selectFile">
+    <!-- <h3>Select archivo</h3> -->
+		<input *ngIf="singleFile && fileCount < 1" type="file" #fileInput (change)="addToQueue()" accept="accept"/>
+    <input *ngIf="!singleFile" type="file" #fileInput multiple (change)="addToQueue()" accept="accept"/>
+  </div>
+  <div class="queue" *ngIf="fileCount > 0">
+    <h3>Archivo{{!singleFile?'s':''}}</h3>
+    <table class="table-headed table-striped">
+      <thead>
+        <tr>
+          <th class="text-left">Nombre</th>
+          <th class="text-right">MB</th>
+          <th class="text-left">Progreso%</th>
+          <th class="text-left">Estatus</th>
+          <th class="text-right">{{!singleFile?'Subir/':''}}Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of queue | async">
+          <td>{{ item?.file?.name }}</td>
+          <td class="text-right">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+          <td>{{ item.progress + ' %' }}</td>
+          <td>
+            <span *ngIf="item.isPending()" class="tag tag-default"></span>
+            <span *ngIf="item.isSuccess()" class="tag tag-success"></span>
+            <span *ngIf="item.inProgress()" class="tag tag-warning"></span>
+            <span *ngIf="item.isError()" class="tag tag-danger"></span>
+          </td>
+          <td class="text-right">
+            <a tooltip="Upload file" (click)="item.upload()" *ngIf="item.isUploadable() && !singleFile">
+              Subir <i class="fa fa-upload"></i>
+            </a>
+            <a tooltip="Cancel upload" (click)="item.cancel()" *ngIf="item.inProgress()">
+              Cancelar <i class="fa fa-times-circle"></i>
+            </a>
+            <a tooltip="Remove from queue" (click)="item.remove()" *ngIf="!item.inProgress() && item.isUploadable()">
+              Borrar <i class="fa fa-trash"></i>
+            </a>
+            <a tooltip="Remove from queue" (click)="item.remove()" *ngIf="!item.inProgress() && !item.isUploadable()">
+              Nuevo <i class="fa fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="progressGeneral">
+
+  </div>
+  <div class="controls" *ngIf="!singleFile && fileCount > 0">
+    <div>
+      <a class="button" (click)="uploader.clearQueue()">Clear queue</a>
+      <a class="button button-primary" (click)="uploader.uploadAll()">Upload all</a>
+    </div>
+  </div>
+</div>

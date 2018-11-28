@@ -1,0 +1,5 @@
+<div class="locationDialogContainer flexBox column space centerVertical">
+  <h1>Selecciona tu ubicación en el mapa y  haz click en {{isUpdate?'actualizar':'continuar'}}</h1>
+  <app-location-selector [(latitude)]="slectedLatitude" [(longitude)]="selectedLongitude"></app-location-selector>
+  <button mat-raised-button (click)="selectLocation()" [disabled]="!slectedLatitude || !selectedLongitude">{{isUpdate?'ACTUALIZAR':'CONTINUAR'}}</button>
+</div>

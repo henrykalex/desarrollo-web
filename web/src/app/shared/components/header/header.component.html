@@ -1,0 +1,14 @@
+<div class="headerContainer flexBox space centerVertical">
+  <div class="userData flexBox centerVertical" no-mobile-flex>
+    <div class="imageContainer">
+      <img src="assets/profile-logo.svg" alt="">
+    </div>
+    <span>BIENVENIDO </span>&nbsp;<span>{{userName}}</span>
+  </div>
+  <div class="mobileHeaderConatiner flexBox centerVertical center" mobile-flex>
+    <button mat-icon-button (click)="openMenu.emit(true)"><mat-icon>menu</mat-icon></button>
+    <div class="imageContainer">
+      <img src="assets/logo.png" alt="">
+    </div>
+  </div>
+</div>

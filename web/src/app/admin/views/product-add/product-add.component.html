@@ -1,0 +1,26 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1>CREACIÓN DE PRODUCTOS</h1>
+  </div>
+  <div class="pageContent padding">
+    <div class="formTitle">
+      <p>Por favor, ingrese la información como se le indica. Los campos se mostrarán en verde si la información es correcta y en rojo en caso de que haya algún error de captura.</p>
+    </div>
+    <div class="formContainer">
+      <app-form [values]="productStartValues" [questions]="productQuestions" [hideSubmit]="true" (valuesChange)="productValues = $event" (validChange)="isProductValid = $event"></app-form>
+      <div >
+        <h1>IMAGEN DEL PRODUCTO</h1>
+        <app-file-uploader #productImageUploader [url]="uploadProductImageUrl" [singleFile]="true" (onCompleteItem)="imageUploaded($event,true)"></app-file-uploader>
+      </div>
+      <div >
+        <h1 *ngIf="!isProductReward">TABLA DE ALIMENTACIÓN</h1>
+        <h1 *ngIf="isProductReward">IMAGEN ADICIONAL</h1>
+        <app-file-uploader #productFeedingChartImageUploader [url]="uploadFeedingChartImageUrl" [singleFile]="true" (onCompleteItem)="imageUploaded($event,false)"></app-file-uploader>
+      </div>
+      <button mat-raised-button *ngIf="!isEdit && !isProductReward" [disabled]="!isProductValid || !isProductImageValid || !isProductFeedingChartImageValid" (click)="createProduct()">CREAR</button>
+      <button mat-raised-button *ngIf="!isEdit && isProductReward" [disabled]="!isProductValid || !isProductImageValid" (click)="createProduct()">CREAR</button>
+      <button mat-raised-button (click)="updateProduct()" *ngIf="isEdit" [disabled]="!productValues && !isProductImageValid && !isProductFeedingChartImageValid">ACTUALIZAR</button>
+      <button mat-raised-button [matDialogClose]="productStartValues" *ngIf="isEdit" >CERRAR</button>
+    </div>
+  </div>
+</div>

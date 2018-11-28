@@ -1,0 +1,35 @@
+@import "../../../../style/variables";
+
+mat-nav-list{
+  padding-top: 0;
+  .image{
+    height: 6em;
+    background-color: $blue;
+    margin-bottom: 2.2em;
+    .imageContainer{
+      height: 2.5em;
+    }
+    border-bottom: solid 1px $dark-blue;
+  }
+  a[mat-list-item]{
+    height: 49px;
+    margin-bottom: 5px;
+    font-size: 0.7em;
+    color: white;
+    &.active{
+      background-color: $dark-blue;
+    }
+    app-menu-icon{
+      height: 100%;
+      width: auto;
+      display: flex;
+      align-items: center;
+    }
+    span{
+      text-align: center;
+      width: 100%;
+      font-size: 1.25em;
+      padding: 5%;
+    }
+  }
+}

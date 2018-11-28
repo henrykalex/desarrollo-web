@@ -1,0 +1,16 @@
+<div class="dialogContainer flexBox column centerVertical space">
+  <div class="dialogTitle">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="dialogContent">
+    <p *ngIf="!contentParsed?.length">{{content}}</p>
+    <p *ngFor="let contentPart of contentParsed">{{contentPart}}</p>
+  </div>
+  <div class="dialogControls">
+    <ng-container *ngFor="let button of buttons">
+      <button mat-button *ngIf="button.accept" matDialogClose="true">{{button.label}}</button>
+      <button mat-button *ngIf="button.cancel" matDialogClose>{{button.label}}</button>
+      <button mat-button *ngIf="!button.accept && !button.cancel" (click)="button.action()">{{button.label}}</button>
+    </ng-container>
+  </div>
+</div>

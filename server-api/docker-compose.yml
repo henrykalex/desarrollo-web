@@ -1,0 +1,21 @@
+version: "2"
+services:
+  home-productsmongo:
+    container_name: home-productsmongo
+    image: mongo
+    restart: always
+    volumes:
+      - ../dbdata:/data/db
+  home-productsapp:
+    container_name: home-productsapp
+    restart: always
+    build: .
+    command: [ "npm", "run", "start.dev"]
+    depends_on:
+      - home-productsmongo
+    links:
+      - home-productsmongo
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+      - ../uploads:/usr/src/uploads

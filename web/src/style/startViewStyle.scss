@@ -1,0 +1,56 @@
+@import "./variables";
+.pageContainer.pageStartContainer{
+  .privacyHeader{
+    border-bottom: solid 1px $black-blue;
+    padding: 1.5em 0;
+    span{
+      font-size: 0.8em;
+      &:first-child{
+        color: $blue + #555;
+      }
+    }
+    a{
+      font-size: 1.25em;
+    }
+  }
+  .pageHeader{
+
+  }
+  .pageContent{
+    background-image: url('./images/start-top.png');
+    background-size: cover;
+    min-height: 78.5vh;
+    .formContainer{
+      // width: 45%;
+      padding-top: 2.7em;
+      p{
+        font-size: 0.9em;
+        text-align: center;
+      }
+      app-form{
+        // width: 65%;
+        padding-top: 2.2em;
+      }
+      button{
+        margin-bottom: 1em;
+        div.buttonInfo{
+          span{
+            line-height: 1.5em;
+            &:last-child{
+              color: $gray - #222;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .pageContainer.pageStartContainer{
+    .pageContent{
+      padding: 2em;
+      .formContainer{
+      }
+    }
+  }
+}

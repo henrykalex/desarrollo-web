@@ -1,0 +1,17 @@
+<div class="formContainer" [ngClass]="{twoCol: !oneCol}">
+  <form (ngSubmit)="submit()" [formGroup]="form">
+
+    <div *ngFor="let question of questions" class="form-row">
+      <app-form-question [question]="question" [form]="form" [isEditing]="isEditing"></app-form-question>
+    </div>
+
+    <div class="form-row flexBox center column centerVertical">
+      <button *ngIf="isEditing && !hideSubmit" mat-raised-button type="submit"
+      [disabled]="!form.valid || ((values!=null) && !valuesChanged) || isLoading" >
+      {{!isLoading?submitText?submitText:'ENVIAR':'CARGANDO...'}}
+    </button>
+      <p *ngIf="isLoading"></p>
+      <p *ngIf="errorMessage">{{errorMessage}}</p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,43 @@
+@import "../../../../style/variables";
+
+.headerContainer{
+  height: $header-height;
+  border-bottom: 1px solid $black-blue;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0070a2+0,0184ba+100 */
+  background: #0070a2; /* Old browsers */
+  background: -moz-linear-gradient(left, #0070a2 0%, #0184ba 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #0070a2 0%,#0184ba 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #0070a2 0%,#0184ba 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0070a2', endColorstr='#0184ba',GradientType=1 ); /* IE6-9 */
+  .userData{
+    padding-left: 1.6em;
+    .imageContainer{
+      height: 2.4em;
+      margin-right: 1em;
+    }
+    span{
+      color: $gray;
+      font-size: 0.8em;
+    }
+    p{
+      font-size: 0.85em;
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .headerContainer{
+    .mobileHeaderConatiner{
+      width: 100%;
+      position: relative;
+      .imageContainer{
+        height: 2em;
+      }
+      button{
+        position: absolute;
+        left: 0;
+        height: 3em;
+        width: 3em;
+      }
+    }
+  }
+}

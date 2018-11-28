@@ -1,0 +1,84 @@
+<div class="pageContainer">
+  <div class="topContainer flexBox">
+    <div class="leftSection">
+      <div class="header flexBox centerVertical">
+        <h1 class="orange" *ngIf="displayType=='order'">ORDEN</h1>
+        <h1 class="orange" *ngIf="displayType=='request'">SOLICITUD</h1>
+      </div>
+      <div class="infoContainer">
+        <div class="info flexBox space" *ngFor="let question of orderQuestions">
+          <div class="leftColumn">
+            <span>{{question.label}}:</span>
+          </div>
+          <div class="rightColumn">
+            <span *ngIf="!question.pipe">{{orderValues?orderValues[question.key]:'cargando...'}}</span>
+            <span *ngIf="question.pipe=='date' && orderValues">{{ orderValues[question.key] | date}}</span>
+            <span *ngIf="question.pipe=='currency' && orderValues">{{ orderValues[question.key] | currency}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="infoContainer">
+        <div class="info flexBox space"*ngIf="loginType=='veterinary'&&displayType=='request'">
+          <div class="leftColumn">
+            <span>CLIENTE:</span>
+          </div>
+          <div class="rightColumn">
+            <span>{{orderValues?.userId?.name}}</span>
+            <button mat-button (click)="openUserModel('cliente',orderValues?.userId?._id)">VER</button>
+          </div>
+        </div>
+        <div class="info flexBox space"*ngIf="(loginType=='distributor'&& displayType=='request')||(loginType=='client'&& displayType=='order')">
+          <div class="leftColumn">
+            <span>VETERINARIO:</span>
+          </div>
+          <div class="rightColumn">
+            <span>{{orderValues?.veterinaryId?.name}}</span>
+            <button mat-button (click)="openUserModel('veterinario',orderValues?.veterinaryId?._id)">VER</button>
+          </div>
+        </div>
+        <div class="info flexBox space"*ngIf="(loginType=='veterinary'&&displayType=='order')||(loginType=='master'&&displayType=='request')">
+          <div class="leftColumn">
+            <span>DISTRIBUIDOR:</span>
+          </div>
+          <div class="rightColumn">
+            <span>{{orderValues?.distributorId?.name}}</span>
+            <button mat-button (click)="openUserModel('distribuidor',orderValues?.distributorId?._id)">VER</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rightSection">
+      <div class="controlsContainer flexBox space">
+        <div class="buttons flexBox column space startVertical">
+          <button mat-button class="orange"  *ngIf="(userProviderRegex.test(loginType) && orderValues?.status!='complete' && loginType!=orderValues?.userType) || (loginType=='master' && orderValues?.userType=='distributor' && orderValues?.status!='complete')" (click)="orderAprove()">LIBERAR SOLICITUD</button>
+        </div>
+        <div class="orderImageContainer flexBox column centerVertical center">
+          <div class="qrContainer flexBox column centerVertical center">
+            <div class="qrCode">
+              <qrcode [qrdata]="orderValues?.orderCode" [level]="'M'" [usesvg]="true"></qrcode>
+            </div>
+            <div class="code flexBox center">
+              <span>{{orderValues?.orderCode}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pointsContainer flexBox column centerVertical center">
+        <h1>{{orderValues?orderValues.totalRewardPoints:'0' }}</h1>
+        <h2>TOTAL DE PUNTOS QUE DA</h2>
+      </div>
+    </div>
+  </div>
+  <div class="tablesContainer">
+    <div class="tableContainer">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>PRODUCTOS</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="orderProductsTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewOrderProduct($event)"></app-table>
+    </div>
+  </div>
+</div>

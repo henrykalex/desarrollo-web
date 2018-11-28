@@ -1,0 +1,41 @@
+.flexBox{
+  display: flex;
+  &.wrap{
+    flex-wrap: wrap;
+  }
+  &.column{
+    flex-direction: column;
+  }
+  // align-items
+  &.centerVertical{
+    align-items: center;
+  }
+  &.startVertical{
+    align-items:flex-start;
+  }
+  &.endVertical{
+    align-items: flex-end;
+  }
+  &.stretchVertical{
+    align-items: stretch;
+  }
+  &.baseVertical{
+    align-items: baseline;
+  }
+  // justify-content
+  &.space{
+    justify-content: space-between;
+  }
+  &.arround{
+    justify-content: space-around;
+  }
+  &.center{
+    justify-content: center;
+  }
+  &.start{
+    justify-content: flex-start;
+  }
+  &.end{
+    justify-content: flex-end;
+  }
+}

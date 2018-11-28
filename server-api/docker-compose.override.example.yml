@@ -1,0 +1,24 @@
+version: "2"
+services:
+  home-productsmongo:
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: home-productsDatabase
+    volumes:
+      - ./dbInit:/docker-entrypoint-initdb.d
+    ports:
+      - "27017:27017"
+  home-productsapp:
+    ports:
+      - "3004:3004"
+    environment:
+      DEBUG: home-productsapi:*
+      NODE_ENV: development
+      DB_USERNAME: root
+      DB_PASSWORD: example
+      DB_NAME: home-productsDatabase
+      DB_HOSTNAME: home-productsmongo
+      PORT: 3004
+      SENDGRID_API_KEY: SG
+      JWT_SECRETE: example

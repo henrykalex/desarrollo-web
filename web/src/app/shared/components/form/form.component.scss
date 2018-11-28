@@ -1,0 +1,35 @@
+.formContainer{
+  &.twoCol{
+    form{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .form-row{
+        flex-basis: 48%;
+        &:last-child{
+          flex-basis: 100%;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+  form{
+    .form-row{
+      margin-bottom: 1.3vh;
+      &:last-child{
+        margin-top: 6vh;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .formContainer{
+    &.twoCol{
+      form{
+        .form-row{
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+}

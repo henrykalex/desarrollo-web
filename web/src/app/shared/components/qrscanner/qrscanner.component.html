@@ -1,0 +1,43 @@
+<div class="scannerContainer">
+  <div *ngIf="availableDevices">
+    <select (change)="onDeviceSelectChange($event.target.value)">
+      <option value="" [selected]="!selectedDevice">Seleccionar dispositivo</option>
+      <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="selectedDevice && device.deviceId === selectedDevice.deviceId">{{ device.label }}</option>
+    </select>
+  </div>
+
+  <div [hidden]="!hasCameras" class="flexBox column centerVertical center">
+    <zxing-scanner #scanner start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+    <h2 *ngIf="!this.selectedDevice">No se ha seleccionado ninguna cámara</h2>
+    <div class="flexBox centerVertical">
+      <p *ngIf="qrResultString">
+        Código detectado:
+        <strong>{{ qrResultString }}</strong>
+      </p>
+      <button mat-button (click)="reset()">REINICIAR</button>
+    </div>
+  </div>
+
+  <div *ngIf="!hasCameras && hasPermission === true" class="flexBox centerVertical center">
+    <h1>Parece que su dispositivo no tiene cámara o no se pudo encontrar. </h1>
+  </div>
+
+  <div *ngIf="hasPermission === undefined" class="flexBox column centerVertical center">
+    <h1>Esperado la autorización.</h1>
+    <blockquote>
+      <h2>Si su dispositivo no tiene cámara, no se requerirá de autorización.</h2>
+    </blockquote>
+  </div>
+
+  <div *ngIf="hasPermission === false" class="flexBox column centerVertical center">
+    <h1>Usted rechazó el permiso para el uso de la cámara y no es posible escanear sin él. 😪</h1>
+  </div>
+  <div class="flexBox center">
+
+  </div>
+</div>
+
+
+
+
+<!-- <p>Angular version: {{ ngVersion }}</p> -->

@@ -1,0 +1,19 @@
+@import "../../../../style/variables";
+.pageContainer{
+  // height: 100%;
+  .pageHeader{
+
+  }
+  .pageContent{
+    // height: 100%;
+    .leftContainer, .rightContainer{
+      flex-basis: 50%;
+    }
+    .leftContainer{
+      padding: 0 $app-margin;
+    }
+    .rightContainer{
+
+    }
+  }
+}

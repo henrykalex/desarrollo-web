@@ -1,0 +1,121 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1>ESTADÍSTICAS</h1>
+  </div>
+  <div class="pageContent">
+    <div class="dateSelectorContainer flexBox center">
+      <div class="dateSelector flexBox space">
+        <form [formGroup]="dateControll">
+          <mat-form-field >
+            <input matInput [matDatepicker]="pickerStart" placeholder="Fecha de inicio" formControlName="dateStart">
+            <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input  matInput [matDatepicker]="pickerEnd" placeholder="Fecha final" formControlName="dateEnd">
+            <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+            <mat-datepicker #pickerEnd></mat-datepicker>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div class="filtersContainer">
+      <div class="filters">
+        <form class="flexBox arround" [formGroup]="filterControll">
+          <mat-form-field *ngIf="this.userType == 'master'">
+            <input type="text" placeholder="DISTRIBUIDOR" matInput formControlName="distributorSelect" [matAutocomplete]="autoDist">
+            <mat-autocomplete #autoDist="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let distributor of distributorsFiltered" [value]="distributor">
+                {{distributor.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field *ngIf="this.userType == 'master' || this.userType == 'distributor'">
+            <input type="text" placeholder="VETERINARIO" matInput formControlName="veterinarySelect" [matAutocomplete]="autoVet">
+            <mat-autocomplete #autoVet="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let veterinary of veterinariesFiltered" [value]="veterinary">
+                {{veterinary.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field *ngIf="this.userType == 'master' || this.userType == 'veterinary'">
+            <input type="text" placeholder="CLIENTE" matInput formControlName="clientSelect" [matAutocomplete]="autoClient">
+            <mat-autocomplete #autoClient="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let client of clientsFiltered" [value]="client">
+                {{client.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="text" placeholder="PRODUCTO" matInput formControlName="productSelect" [matAutocomplete]="autoProduct">
+            <mat-autocomplete #autoProduct="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let product of productsFiltered" [value]="product">
+                {{product.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div class="statsContainer flexBox column centerVertical">
+      <div class="stats flexBox arround">
+        <div class="stat flexBox column center centerVertical">
+          <span class="number">{{dynamicStats?.purchasesCount}}</span>
+          <span>COMPRAS TOTALES</span>
+        </div>
+        <div class="stat flexBox column center centerVertical">
+          <span class="number">{{dynamicStats?.salesCount}}</span>
+          <span>VENTAS TOTALES</span>
+        </div>
+        <div class="stat flexBox column center centerVertical">
+          <span class="number">{{dynamicStats?.pointsCount?.total?dynamicStats?.pointsCount?.total:0}}</span>
+          <span>PUNTOS TOTALES</span>
+          <div class="flexBox">
+            <span class="small">{{dynamicStats?.pointsCount?.used?dynamicStats?.pointsCount?.used:0}} - USADOS </span>
+            &nbsp;
+            <span class="small">{{dynamicStats?.pointsCount?.left?dynamicStats?.pointsCount?.left:0}} - DISPONIBLES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="statsContainer flexBox column centerVertical">
+      <div class="stats flexBox arround">
+        <div class="stat flexBox column center centerVertical">
+          <span class="number">{{staticStats?.clientsCount}}</span>
+          <span>CLIENTES</span>
+        </div>
+        <div class="stat flexBox column center centerVertical">
+          <span class="number">{{staticStats?.veterinariesCount}}</span>
+          <span>VETERINARIOS</span>
+        </div>
+        <div class="stat flexBox column center centerVertical">
+          <span class="number">{{staticStats?.distributorsCount}}</span>
+          <span>ALMACENES</span>
+        </div>
+      </div>
+      <div class="statsButtonContainer flexBox center">
+        <button mat-raised-button (click)="downloadStats()" [disabled]="isLoading">{{isLoading?'DESCARGANDO...':'DESCARGAR CSV'}}</button>
+      </div>
+    </div>
+    <div class="tableContainer">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>Productos + vendidos</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="productsSoldTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewProduct($event)"></app-table>
+    </div>
+    <div class="tableContainer">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>Productos + canjeados</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="productsRewardSoldTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewProduct($event)"></app-table>
+    </div>
+  </div>
+</div>

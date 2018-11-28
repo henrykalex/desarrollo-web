@@ -1,0 +1,6 @@
+<div class="selector">
+  <h1>Selecciona el número de piezas.</h1>
+  <app-counter [(value)]="counterValue"></app-counter>
+  <button mat-button matDialogClose>CANCELAR</button>
+  <button mat-raised-button [disabled]="!counterValue" [matDialogClose]="counterValue">ACEPTAR</button>
+</div>

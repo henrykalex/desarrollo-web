@@ -1,0 +1,24 @@
+@import "../../../../style/variables";
+.questionContainer{
+  .inputContainer{
+    input{
+      border: 0.55px solid transparent;
+      &.ng-touched.ng-invalid{
+        border: 0.55px solid $red;
+      }
+      &.ng-valid{
+        // background-image: url('../../../../scss/images/check-circle.svg');
+        background-repeat: no-repeat;
+        background-size: 1.5em;
+        background-position: 95% 50%;
+        // padding-left: 2.5em;
+        border: 0.55px solid $green;
+      }
+    }
+  }
+  p{
+    background-color: $black-blue;
+    width: 100%;
+    padding: 0.8em 1em;
+  }
+}

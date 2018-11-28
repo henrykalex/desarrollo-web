@@ -1,0 +1,9 @@
+<div class="locationSelectorContainer">
+  <agm-map [zoom]="15" [latitude]="startLatitude" [longitude]="startLongitude" (centerChange)="mapCenterChange($event)">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+  </agm-map>
+  <div class="flexBox space">
+    <h1>Longitud: {{_Math?.trunc(longitude*10000)/10000}}</h1>
+    <h1>Latitud: {{_Math?.trunc(latitude*10000)/10000}}</h1>
+  </div>
+</div>

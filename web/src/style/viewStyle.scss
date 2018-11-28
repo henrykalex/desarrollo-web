@@ -1,0 +1,140 @@
+@import "./variables";
+.pageContainer{
+  .topContainer{
+    width: 100%;
+    .leftSection{
+      flex-basis: 59%;
+      .header{
+        padding: 0 13%;
+        h1{
+          font-size: 1.3em;
+          font-weight: 600;
+          color: $orange;
+        }
+      }
+      .infoContainer{
+        padding: 2em 13%;
+        .info{
+          .leftColumn{
+            span{
+              font-weight: 600;
+            }
+          }
+          .rightColumn,.leftColumn{
+            flex-basis: 50%;
+            span{
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+    }
+    .rightSection{
+      flex-basis: 41%;
+      .controlsContainer{
+        background-color: $black-blue;
+        // height: 11.4em;
+        padding: 0.5em;
+        .buttons{
+          height: 10em;
+          padding: 1em;
+        }
+        .qrContainer{
+          width: 9em;
+          .qrCode{
+            padding: 0.5em;
+            background-color: white;
+            height: 9em;
+            width: 100%;
+          }
+          .code{
+            padding: 0.3em;
+            span{
+              color: $orange;
+              font-weight: 600;
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+      .pointsContainer{
+        background-color: $blue;
+        padding: 2.5em 0;
+        min-height: 12em;
+        h1{
+          font-size: 3.5em;
+          font-weight: 600;
+        }
+        h2{
+          font-size: 2.3em;
+          font-weight: 600;
+          color: $black-blue;
+          text-align: center;
+          width: 80%;
+        }
+      }
+      .productImageContainer{
+        // width: 28.5em;
+        margin-bottom: -5px;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .pageContainer{
+    .topContainer{
+      flex-wrap: wrap;
+      .leftSection{
+        flex-basis: 100%;
+        .header{
+          h1{
+          }
+        }
+        .infoContainer{
+          .info{
+            .leftColumn{
+              span{
+              }
+            }
+            .rightColumn,.leftColumn{
+              span{
+              }
+            }
+          }
+        }
+      }
+      .rightSection{
+        flex-basis: 100%;
+        .controlsContainer{
+
+          .buttons{
+
+          }
+          .qrContainer{
+            .qrCode{
+
+            }
+            .code{
+              span{
+
+              }
+            }
+          }
+        }
+        .pointsContainer{
+
+          h1{
+
+          }
+          h2{
+
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../../style/variables";
+.pageContainer{
+  .pageContent{
+    .formContainer{
+      width: 60%;
+      app-form{
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px){
+  .pageContainer{
+    .pageContent{
+      .formContainer{
+        width: 100%;
+        padding-top: 0;
+        app-form{
+          padding-top: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

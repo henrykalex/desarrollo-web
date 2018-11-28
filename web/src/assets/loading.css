@@ -1,0 +1,53 @@
+.loadingApp {
+    opacity: 0;
+    display: none;
+
+    transition: opacity .8s ease-in-out;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(#084b85, 1);
+    z-index: 900;
+
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-family: -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen-Sans,
+        Ubuntu,
+        Cantarell,
+        Helvetica,
+        sans-serif;
+    font-size: 2em;
+}
+.loadingApp span{
+  color: white;
+}
+app-root:empty + .loadingApp {
+    opacity: 1;
+    display: flex;
+}
+@keyframes dots {
+  50% {
+    transform: translateY(-.4rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.d {
+  animation: dots 1.5s ease-out infinite;
+}
+.d-2 {
+  animation-delay: .5s;
+}
+.d-3 {
+  animation-delay: 1s;
+}

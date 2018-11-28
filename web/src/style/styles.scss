@@ -1,0 +1,156 @@
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "./animate";
+// .wow {
+//    visibility: hidden;
+// }
+@import "./font";
+@import "./variables";
+@import "./devaToolBox";
+@import "./materialTheme";
+
+body{
+  background-color: $dark-blue;
+}
+li, span, p, h1, h2, h3, h4, h5, input, button, label, select, textarea{
+  color: white;
+  font-family: DINPro;
+  font-weight: 100;
+}
+h1{
+  font-size: 1.1em;
+}
+h2{
+  font-size: 0.9em;
+}
+
+mat-sidenav-container.sideNavContainer{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pageContainer{
+  .header{
+    height: $header-height;
+    width: 100%;
+    border-bottom: 1px solid $black-blue;
+  }
+  .pageHeader{
+    height: 6em;
+    width: 100%;
+    border-bottom: 1px solid $black-blue;
+    .imageContainer{
+      height: 3.6em;
+    }
+    h1{
+      font-size: 1.75em;
+      font-weight: 600;
+    }
+  }
+  .bannerContainer{
+    width: 100%;
+    height: 17em;
+    background-size: 100% auto;
+    background-position-y: center;
+    &.distributor{
+      background-image: url('./images/distributor-top.png');
+    }
+    &.veterinary{
+      background-image: url('./images/veterinary-top.png');
+    }
+    &.client{
+      background-image: url('./images/client-top.png');
+    }
+  }
+}
+@import "./startViewStyle";
+@import "./viewStyle";
+
+.tableContainer{
+  .tableHeader{
+    background: $blue; /* Old browsers */
+    background: -moz-linear-gradient(left, #0c5aab 0%, $blue 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #0c5aab 0%,$blue 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #0c5aab 0%,$blue 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-color: $blue;
+    height: 2.8em;
+    padding-left: 5.2em;
+    h2{
+      font-weight: 500;
+    }
+    button{
+      height: 100%;
+      padding: 0;
+      width: 11em;
+      span{
+        font-weight: 500;
+      }
+    }
+  }
+}
+.pageContent{
+  &.padding{
+    padding: 4.3em 9em;
+  }
+  .formTitle{
+    margin-bottom: 1.5em;
+  }
+}
+
+input, input[type="search"], select, textarea{
+  background-color: $black-blue;
+  width: 100%;
+  padding: 0.65em 1em;
+  -webkit-appearance: none;
+  border-radius: 0;
+  &::placeholder{
+    color: white;
+  }
+  &:focus{
+    border: 0.55px solid white;
+  }
+}
+input[type="search"]{
+  // background-image:url('./images/searchbar.svg');
+  background-repeat: no-repeat;
+  background-size: 1.5em;
+  background-position: 1em 75%;
+  padding-left: 4em;
+}
+@media screen and (max-width: 480px){
+  .tableContainer{
+    .tableHeader{
+      padding-left: 1em;
+    }
+  }
+
+  .pageContainer{
+    .pageContent{
+      &.padding{
+        padding: 2em;
+      }
+      .newOrderContainer,.newRequestContainer{
+        .controls{
+          flex-wrap: wrap;
+        }
+      }
+    }
+    .header{
+    }
+    .pageHeader{
+      padding: 0 2em;
+      h1{
+        text-align: center;
+      }
+      .imageContainer{
+      }
+    }
+    .bannerContainer{
+      height: 12em;
+    }
+  }
+}
+
+@import "./material-override";

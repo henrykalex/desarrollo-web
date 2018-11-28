@@ -1,0 +1,32 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1 class="orange" *ngIf="displayType=='order'">ÓRDENES A PROVEEDORES</h1>
+    <h1 class="orange" *ngIf="displayType=='request'">SOLICITUDES DE CLIENTES</h1>
+  </div>
+  <div class="pageContent">
+    <div class="tableContainer">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2 *ngIf="displayType=='order'">Órdenes realizadas</h2>
+        <h2 *ngIf="displayType=='request'">Solicitudes realizadas</h2>
+        <button class="light" mat-raised-button [routerLink]="'../orden'" *ngIf="displayType=='order'">NUEVA ORDEN</button>
+        <button class="light" mat-raised-button [routerLink]="'../pedido'" *ngIf="displayType=='request'">NUEVA SOLICITUD</button>
+      </div>
+      <app-table
+      *ngIf="displayType=='request'"
+      [reset]="resetTable"
+      [viewButton]="true"
+      [deleteButton]="true"
+      [deleteText]="'LIBERAR'"
+      [sourceFunction]="tableAproveFunction"
+      [columns]="columns"
+      (onItemClick)="viewOrder($event)"
+      (onItemDelete)="orderAprove($event)"></app-table>
+      <app-table
+      [reset]="resetTable"
+      [viewButton]="true"
+      [sourceFunction]="tableFunction"
+      [columns]="columns"
+      (onItemClick)="viewOrder($event)"></app-table>
+    </div>
+  </div>
+</div>

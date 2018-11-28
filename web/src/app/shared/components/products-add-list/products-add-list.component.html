@@ -1,0 +1,37 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1>PRODUCTOS</h1>
+  </div>
+  <div class="pageContent">
+    <mat-tab-group color="primary">
+      <mat-tab label="Productos">
+        <div class="tableContainer">
+          <div class="tableHeader flexBox space centerVertical">
+            <h2>Productos</h2>
+            <button class="light" mat-raised-button *ngIf="authService.isMaster" [routerLink]="'../producto'">CREAR PRODUCTO</button>
+          </div>
+          <app-table
+          [viewButton]="true"
+          [sourceFunction]="tableFunction"
+          [columns]="columns"
+          viewLabel="+"
+          (onItemClick)="viewProduct($event)"></app-table>
+        </div></mat-tab>
+      <mat-tab label="Recompensas">
+        <div class="tableContainer">
+          <div class="tableHeader flexBox space centerVertical">
+            <h2>Productos recompensa</h2>
+            <button class="light" mat-raised-button *ngIf="authService.isMaster" [routerLink]="'../producto/reward'">CREAR PRODUCTO</button>
+          </div>
+          <app-table
+          [viewButton]="true"
+          [sourceFunction]="tableRewardFunction"
+          [columns]="columns"
+          viewLabel="+"
+          (onItemClick)="viewProduct($event)"></app-table>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+</div>

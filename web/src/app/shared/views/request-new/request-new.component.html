@@ -1,0 +1,47 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1>SOLICITUD NUEVA</h1>
+  </div>
+  <div class="pageContent padding">
+    <div class="newRequestContainer flexBox center column centerVertical">
+      <div class="formTitle">
+        <p>Los productos pueden ser agregados desde la vista del producto o utilizando el botón "Agregar Producto+".</p>
+      </div>
+      <div class="productsListContainer flexBox column centerVertical">
+        <button mat-raised-button class="big" (click)="openAddProduct()">Agregar Producto +</button>
+        <div class="productsList">
+          <div class="product flexBox space centerVertical" *ngFor="let request of requestList">
+            <h2>{{request.productName}}</h2>
+            <h3>{{request.quantity}} pzs</h3>
+            <button mat-button (click)="requestService.removeFromRequest(request.productId)">ELIMINAR</button>
+          </div>
+        </div>
+      </div>
+      <div class="flexBox center">
+        <h2>Total: {{totalCost|currency}}</h2>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <h2>Costo (puntos): {{totalPoints}}</h2>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <h2>Recompensa (puntos): {{totalRewardPoints}}</h2>
+      </div>
+      <div class="" *ngIf="userType=='master'||userType=='distributor'||userType=='veterinary'">
+        <mat-form-field color="primary">
+          <input type="text" placeholder="SELECCIONAR PROVEEDOR" matInput [formControl]="selectBuyer" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let buyer of buyers" [value]="buyer">
+              {{buyer?.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="controls flexBox center">
+        <button mat-raised-button (click)="clearList()">BORRAR</button>
+        <button mat-raised-button [disabled]="!requestList?.length || ((this.userType=='client'||this.userType=='veterinary') && !selectedBuyer)" (click)="sendRequest()">GENERAR ORDEN</button>
+      </div>
+    </div>
+  </div>
+</div>

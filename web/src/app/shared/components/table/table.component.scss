@@ -1,0 +1,12 @@
+.tableContainer{
+  .loadingShade{
+    background-color: white;
+  }
+  .noEntries{
+    background-color: white;
+    padding: 0.5em 2em;
+    span{
+      color: black;
+    }
+  }
+}

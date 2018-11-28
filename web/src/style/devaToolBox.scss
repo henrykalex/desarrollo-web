@@ -1,0 +1,49 @@
+@import "./reseter";
+@import "./flexBox";
+.backgroundImageContainer{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.imageContainer{
+  height: 1em;
+  img{
+    width: auto;
+    height: 100%;
+  }
+}
+
+.backgroundImage{
+  position: absolute;
+  width: auto;
+  height: 100%;
+  z-index: -100;
+  top: 0;
+  overflow: hidden;
+  img{
+    width: auto;
+    height: 100%;
+    z-index: -200;
+  }
+}
+
+[no-mobile]{
+  display: block;
+}
+[no-mobile-flex]{
+  display: flex;
+}
+[mobile],[mobile-flex]{
+  display: none;
+}
+@media screen and (max-width: 480px){
+  [no-mobile],[no-mobile-flex]{
+    display: none;
+  }
+  [mobile]{
+    display: block;
+  }
+  [mobile-flex]{
+    display: flex;
+  }
+}

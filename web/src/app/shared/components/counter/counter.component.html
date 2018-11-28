@@ -1,0 +1,11 @@
+<div class="counterContainer">
+  <div class="flexContainer">
+    <button mat-icon-button (click)="remove()" [disabled]="counter.value==0">
+      <mat-icon >remove</mat-icon>
+    </button>
+    <input [formControl]="counter">
+    <button mat-icon-button (click)="add()">
+      <mat-icon >add</mat-icon>
+    </button>
+  </div>
+</div>

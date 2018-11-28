@@ -1,0 +1,9 @@
+curl -H "Content-Type: application/json" \
+    --request POST \
+    --data '{"name":"Master (administrador)","email":"admin@mail.com","password":"admin"}' \
+    http://localhost:3004/register/master
+
+curl -H "Content-Type: application/json" \
+    --request POST \
+    --data '{"name":"Master","email":"admin1@mail.com","password":"admin"}' \
+    https://home-products.softwaredeva.com/api/register/master

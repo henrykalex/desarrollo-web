@@ -1,0 +1,75 @@
+<div class="pageContainer">
+  <div class="topContainer flexBox">
+    <div class="leftSection">
+      <div class="header flexBox centerVertical">
+        <h1 class="orange">{{userModelValues.name}}</h1>
+      </div>
+      <div class="infoContainer">
+        <div class="info flexBox space" *ngFor="let question of userModelQuestions">
+          <div class="leftColumn">
+            <span>{{question.label}}:</span>
+          </div>
+          <div class="rightColumn">
+            <span>{{userModelValues?userModelValues[question.key]:'cargando...'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rightSection">
+      <div class="controlsContainer flexBox space">
+        <div class="buttons flexBox column space startVertical">
+          <button mat-button>EDITAR PERFIL</button>
+          <button mat-button class="orange">ELIMINAR CUENTA</button>
+          <button mat-button *ngIf="userDisplayType=='distributor' || userDisplayType=='client'" (click)="openLinkUser('veterinarios')">AFILIAR VETERINARIO</button>
+          <button mat-button *ngIf="userDisplayType=='veterinary'" (click)="openLinkUser('clientes')">AFILIAR CLIENTE</button>
+          <button mat-button *ngIf="userDisplayType=='veterinary'" (click)="openLinkUser('distribuidores')">AFILIAR DISTRIBUIDOR</button>
+          <!-- <button mat-button>:D</button> -->
+        </div>
+        <div class="qrContainer flexBox column centerVertical center">
+          <div class="qrCode">
+            <qrcode [qrdata]="userModelValues.userCode" [level]="'M'" [usesvg]="true"></qrcode>
+          </div>
+          <div class="code flexBox center">
+            <span>{{userModelValues.userCode}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="pointsContainer flexBox column centerVertical center">
+        <h1>{{userModelValues?userModelValues.points:'0'}}</h1>
+        <h2>PUNTOS</h2>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="tablesContainer">
+    <div class="tableContainer" *ngIf="userDisplayType=='veterinary'">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>ALMACENES AFILIADOS</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="distributorsTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewUserModel($event)"></app-table>
+    </div>
+    <div class="tableContainer" *ngIf="userDisplayType=='distributor' || userDisplayType=='client'">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>VETERINARIOS AFILIADOS</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="veterinariesTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewUserModel($event)"></app-table>
+    </div>
+    <div class="tableContainer" *ngIf="userDisplayType=='veterinary'">
+      <div class="tableHeader flexBox space centerVertical">
+        <h2>CLIENTES AFILIADOS</h2>
+      </div>
+      <app-table
+      [viewButton]="true"
+      [sourceFunction]="clientsTableFunction"
+      [columns]="columns"
+      (onItemClick)="viewUserModel($event)"></app-table>
+    </div>
+  </div> -->
+</div>

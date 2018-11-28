@@ -1,0 +1,53 @@
+<div class="pageContainer pageStartContainer">
+  <div class="privacyHeader flexBox center centerVertical">
+    <div class="privacy">
+      <a mat-button routerLink="/privacidad">
+        <span>CONSULTA NUESTRO | </span>
+        <span>AVISO DE PRIVACIDAD</span>
+      </a>
+    </div>
+  </div>
+  <div class="pageHeader flexBox center centerVertical">
+    <div class="imageContainer">
+      <img src="assets/logo.png" alt="IRON-DOG">
+    </div>
+  </div>
+  <div class="pageContent flexBox center">
+    <div class="formContainer flexBox column center centerVertical">
+      <p>Regístrate</p>
+      <app-form
+      [questions]="userModelQuestions"
+      [submitText]="registerType=='veterinary'?'CONTINUAR':'EVIAR'"
+      (onSubmit)="register($event)"
+      [errorMessage]="errorMessage"
+      [isLoading]="isLoading"></app-form>
+      <!-- <button (click)="register({name:'henry'})">TEST</button> -->
+      <h1 *ngIf="registerType=='veterinary' && location">
+        Ubicación: {{'Lng: '+location.lng+' Lat: '+location.lat}}
+      </h1>
+      <br *ngIf="registerType=='veterinary' && location">
+      <button mat-button type="button" (click)="goToLogin()">
+        <div class="buttonInfo flexBox column centerVertical">
+          <span>¿Ya tienes cuenta?</span>
+          <span>Inicia sesión</span>
+        </div>
+      </button>
+      <button mat-button type="button"
+      *ngIf="!registerType || registerType=='veterinary'"
+      [routerLink]="['/registro','distribuidor']">
+        <div class="buttonInfo flexBox column centerVertical">
+          <span>¿Quieres ser un distribuidor?</span>
+          <span>Envíanos una solicitud de registro</span>
+        </div>
+      </button>
+      <button mat-button type="button"
+      *ngIf="registerType=='distributor'"
+      [routerLink]="['/registro','veterinario']">
+        <div class="buttonInfo flexBox column centerVertical">
+          <span>¿Quieres ser veterinario?</span>
+          <span>Envíanos una solicitud de registro</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1 *ngIf="userDisplayType=='distributor'">CREACIÓN DE ALMACENES</h1>
+    <h1 *ngIf="userDisplayType=='veterinary'">CREACIÓN DE VETERINARIOS</h1>
+    <h1 *ngIf="userDisplayType=='client'">CREACIÓN DE CLIENTES</h1>
+  </div>
+  <div class="pageContent padding">
+    <div class="formTitle">
+      <p>Por favor, ingrese la información como se le indica. Los campos se mostrarán en verde si la información es correcta y en rojo en caso de que haya algún error de captura.</p>
+    </div>
+    <div class="form">
+      <app-form [values]="userModelValues" [questions]="userModelQuestions" [hideSubmit]="true" (valuesChange)="userValues = $event" (validChange)="isUserValid = $event"></app-form>
+      <div *ngIf="userDisplayType=='distributor' || userDisplayType=='veterinary'">
+        <h1>DOMICILIO DE ENTREGA</h1>
+        <app-form [values]="addressStartValues" [questions]="addressQuestions" [hideSubmit]="true" (valuesChange)="addressValues = $event" (validChange)="addressValid = $event"></app-form>
+      </div>
+      <div *ngIf="userDisplayType=='distributor'">
+        <h1>DOMICILIO FISCAL</h1>
+        <app-form [values]="legalAddressStartValues" [questions]="addressQuestions" [hideSubmit]="true" (valuesChange)="legalAddressValues = $event" (validChange)="legalAddressValid = $event"></app-form>
+        <h1>REFERENCIAS</h1>
+        <app-form [values]="distributorReferenceValues" [questions]="distributorReferenceQuestions" [hideSubmit]="true" (valuesChange)="referenceValues = $event" (validChange)="referenceValid = $event"></app-form>
+      </div>
+      <div class="flexBox center">
+        <!-- DEBUG ONLY -->
+        <button mat-raised-button *ngIf="!isEdit" (click)="createUser()" [disabled]="!isUserValid || ((userDisplayType=='distributor' || userDisplayType=='veterinary') && !addressValid ) || (userDisplayType=='distributor' && !referenceValid && !legalAddressValid)">{{userDisplayType=='veterinary'?'CONTINUAR':'CREAR'}}</button>
+        <!-- <button mat-raised-button *ngIf="!isEdit" (click)="createUser()">CREAR</button> -->
+        <button mat-raised-button (click)="updateUserModel()" *ngIf="isEdit" [disabled]="!userValues && ((userDisplayType=='distributor' || userDisplayType=='veterinary') && !addressValid ) && (userDisplayType=='distributor' && !referenceValid && !legalAddressValid)">ACTUALIZAR</button>
+        <button mat-raised-button (click)="updateLocation()" *ngIf="isEdit && userDisplayType=='veterinary'">UBICACIÓN</button>
+        <button mat-raised-button matDialogClose *ngIf="isEdit" >CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>

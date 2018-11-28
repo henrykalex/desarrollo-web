@@ -1,0 +1,47 @@
+<div class="pageContainer">
+  <div class="pageHeader flexBox center centerVertical">
+    <h1>ORDEN NUEVA</h1>
+  </div>
+  <div class="pageContent padding">
+    <div class="newOrderContainer flexBox center column centerVertical">
+      <div class="title">
+        <p>Los productos pueden ser agregados desde la vista del producto o utilizando el botón "Agregar Producto+".</p>
+      </div>
+      <div class="productsListContainer flexBox column centerVertical">
+        <button mat-raised-button class="big" (click)="openAddProduct()">Agregar Producto +</button>
+        <div class="productsList">
+          <div class="product flexBox space centerVertical" *ngFor="let order of orderList">
+            <h2>{{order.productName}}</h2>
+            <h3>{{order.quantity}} pzs</h3>
+            <button mat-button (click)="orderService.removeFromOrder(order.productId)">ELIMINAR</button>
+          </div>
+        </div>
+      </div>
+      <div class="flexBox center">
+        <h2>Total: {{totalCost|currency}}</h2>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <h2>Costo (puntos): {{totalPoints}}</h2>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <h2>Recompensa (puntos): {{totalRewardPoints}}</h2>
+      </div>
+      <div class="" *ngIf="userType=='client'||userType=='veterinary'">
+        <mat-form-field color="accent">
+          <input type="text" placeholder="SELECCIONAR PROVEEDOR" matInput [formControl]="selectProvider" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let provider of providers" [value]="provider">
+              {{provider?.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="controls flexBox center">
+        <button mat-raised-button (click)="clearList()">BORRAR</button>
+        <button mat-raised-button [disabled]="!orderList?.length || ((this.userType=='client'||this.userType=='veterinary') && !selectedProvider)" (click)="sendOrder()">GENERAR ORDEN</button>
+      </div>
+    </div>
+  </div>
+</div>
