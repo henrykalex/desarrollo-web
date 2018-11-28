@@ -22,7 +22,7 @@ export class DistributorComponent extends SideMenuBase implements OnInit {
     super(media,changeDetectorRef);
     this.menuLinks = [
       {name:'MI PERFIL',link:'/distribuidor/perfil'},
-      {name:'VETERINARIOS IRONDOG',link:'/distribuidor/veterinarios'},
+      {name:'TIENDAS ',link:'/distribuidor/tiendas'},
       {name:'ÓRDENES A PROVEEDORES',link:'/distribuidor/ordenes'},
       {name:'PRODUCTOS',link:'/distribuidor/productos'},
       {name:'CANJEO DE PUNTOS',link:'/distribuidor/productos-recompensa'},

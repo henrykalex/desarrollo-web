@@ -28,7 +28,7 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
-    path: 'veterinario',
+    path: 'tienda',
     loadChildren: 'app/veterinary/veterinary.module#VeterinaryModule',
     canLoad: [AuthGuard]
   },

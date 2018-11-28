@@ -96,23 +96,8 @@ export class UserModelAddComponent implements OnInit {
     }
     if(this.userDisplayType == 'veterinary'){
       userData.shippingAddress = this.addressValues;
-
-      let dialogRef = this.matDialog.open(LocationSelectDialogComponent, {
-        width: '90vw',
-        height: '90vh',
-        data: { },
-        disableClose: true,
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed',result);
-        // this.productValues = result;
-        userData.location = [result.longitude,result.latitude];
-        this._createUser(event);
-      });
-    }else{
-      this._createUser(userData);
     }
-
+    this._createUser(userData);
 
   }
   _createUser(userData){
@@ -121,7 +106,7 @@ export class UserModelAddComponent implements OnInit {
       console.log("response",response);
       let userModelsRoute  =
       this.userDisplayType == 'distributor'?'distribuidores':
-      this.userDisplayType == 'veterinary'?'veterinarios':
+      this.userDisplayType == 'veterinary'?'tiendas':
       this.userDisplayType == 'client'?'clientes':
       null;
       this.router.navigate(['admin',userModelsRoute]);

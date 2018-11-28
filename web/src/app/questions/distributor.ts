@@ -4,21 +4,21 @@ export const DistributorQuestions = [
   new TextboxQuestion({
     key: 'name',
     type: 'text',
-    label: 'EMPRESA',
+    label: 'NOMBRE ALMACEN',
     required: true,
     order: 1,
   }),
   new TextboxQuestion({
     key: 'legalUserName',
     type: 'text',
-    label: 'REPRESENTANTE LEGAL',
+    label: 'GERENTE',
     required: true,
     order: 1,
   }),
   new TextboxQuestion({
     key: 'rfc',
     type: 'text',
-    label: 'RFC',
+    label: 'DIRECCIÓN',
     required: true,
     order: 1,
   }),
@@ -32,7 +32,7 @@ export const DistributorQuestions = [
   new TextboxQuestion({
     key: 'referenceCode',
     type: 'text',
-    label: 'Código del que lo recomendó',
+    label: 'CÓDIGO DEL QUE LO RECOMENDÓ',
     required: false,
     order: 1,
   }),

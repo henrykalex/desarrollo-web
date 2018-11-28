@@ -29,8 +29,8 @@ const routes: Routes = [
         { path: '',   redirectTo: 'perfil', pathMatch: 'full' },
         { path: 'perfil', component: UserModelViewComponent, data: {type: 'distributor'} },
 
-        { path: 'veterinarios', component: UserModelsComponent, data: {type: 'veterinary'} },
-        { path: 'ver/veterinario/:id', component: UserModelViewComponent, data: {type: 'veterinary'} },
+        { path: 'tiendas', component: UserModelsComponent, data: {type: 'veterinary'} },
+        { path: 'ver/tienda/:id', component: UserModelViewComponent, data: {type: 'veterinary'} },
 
 
         { path: 'ordenes', component: OrdersRequestsComponent, data: {type: 'order'} },
@@ -48,7 +48,7 @@ const routes: Routes = [
 
         { path: 'estadisticas', component: StatsComponent },
 
-        { path: 'escaner/veterinarios', component: LinkUserComponent, data: {type: 'veterinary'} },
+        { path: 'escaner/tiendas', component: LinkUserComponent, data: {type: 'veterinary'} },
 
         ]
       }

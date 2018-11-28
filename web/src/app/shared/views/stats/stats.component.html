@@ -31,7 +31,7 @@
             </mat-autocomplete>
           </mat-form-field>
           <mat-form-field *ngIf="this.userType == 'master' || this.userType == 'distributor'">
-            <input type="text" placeholder="VETERINARIO" matInput formControlName="veterinarySelect" [matAutocomplete]="autoVet">
+            <input type="text" placeholder="TIENDA" matInput formControlName="veterinarySelect" [matAutocomplete]="autoVet">
             <mat-autocomplete #autoVet="matAutocomplete" [displayWith]="displayFn">
               <mat-option *ngFor="let veterinary of veterinariesFiltered" [value]="veterinary">
                 {{veterinary.name}}
@@ -86,7 +86,7 @@
         </div>
         <div class="stat flexBox column center centerVertical">
           <span class="number">{{staticStats?.veterinariesCount}}</span>
-          <span>VETERINARIOS</span>
+          <span>TIENDAS</span>
         </div>
         <div class="stat flexBox column center centerVertical">
           <span class="number">{{staticStats?.distributorsCount}}</span>

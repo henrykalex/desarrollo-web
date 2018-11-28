@@ -4,14 +4,14 @@ export const VeterinaryQuestions = [
   new TextboxQuestion({
     key: 'name',
     type: 'text',
-    label: 'NOMBRE VETERINARIA',
+    label: 'NOMBRE TIENDA',
     required: true,
     order: 1,
   }),
   new TextboxQuestion({
     key: 'legalUserName',
     type: 'text',
-    label: 'NOMBRE MVZ',
+    label: 'NOMBRE GERENTE',
     required: true,
     order: 1,
   }),
@@ -39,7 +39,7 @@ export const VeterinaryQuestions = [
   new TextboxQuestion({
     key: 'distributorCode',
     type: 'text',
-    label: 'CÓDIGO DEL DISTRIBUIDOR (OPCIONAL)',
+    label: 'CÓDIGO DEL ALMACEN (OPCIONAL)',
     required: false,
     order: 1,
   }),

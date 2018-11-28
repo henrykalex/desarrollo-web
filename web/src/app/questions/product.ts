@@ -15,14 +15,14 @@ export const ProductQuestions = [
     required: true,
     order: 1,
     options: [
-      {key: 'small',value:'RAZA PEQUEÑA'},
-      {key: 'size',value:'RAZA MEDIANA & GRANDE'},
-      {key: 'all',value:'TODAS LAS RAZAS'},
-      {key: 'client',value:'CLIENTE FINAL'},
+      {key: 'home',value:'HOGAR'},
+      {key: 'coucine',value:'COCINA'},
+      {key: 'bathroom',value:'BAÑO'},
+      {key: 'room',value:'CUARTO'},
     ]
   }),
   new TextboxQuestion({
-    key: 'nutritional',
+    key: 'characteristics',
     type: 'text',
     label: 'CARACTERÍSTICAS',
     required: true,

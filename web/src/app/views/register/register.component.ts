@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       this.registerTypeUrl = urlType;
       this.registerType =
       urlType == 'distribuidor'?'distributor':
-      urlType == 'veterinario'?'veterinary':
+      urlType == 'tienda'?'veterinary':
       '';
       console.log("this.registerType",this.registerType);
       if(!this.registerType)

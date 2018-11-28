@@ -51,11 +51,6 @@ var order = require('./routes/order');
 app.use(urlBase,order);
 var request = require('./routes/request');
 app.use(urlBase,request);
-var publicVets = require('./routes/publicVets');
-app.use(urlBase,publicVets);
-
-// var cron = require('./controllers/cronController');
-// cron.start();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

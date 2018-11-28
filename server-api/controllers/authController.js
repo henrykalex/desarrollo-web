@@ -44,8 +44,8 @@ loginUserModel = function(req, res, next, type){
     if(!user) return next(appError("Usuario no encontrado",403));
     user.comparePassword(req.body.password, function (err, isMatch) {
       if (isMatch && !err) {
-        if(user.status == 'verify' || user.status == 'verify-request')
-        return next(appError("Debes verificar tu cuenta",403));
+        // if(user.status == 'verify' || user.status == 'verify-request')
+        // return next(appError("Debes verificar tu cuenta",403));
         if(type == 'distributor' || type == 'veterinary'){
           if(user.status == 'request')
           return next(appError("Debes esperar a que acepten tu solicitud",403));
@@ -125,8 +125,8 @@ registerUserModel = function(req,res,next, type){
     newUser.location = body.location;
   }
   if(type == 'client'){
-    newUser.petName = body.petName;
-    newUser.petBreed = body.petBreed;
+    newUser.phone = body.phone;
+    newUser.country = body.country;
   }
 
 

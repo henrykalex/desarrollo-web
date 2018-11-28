@@ -7,7 +7,7 @@
   </div>
 
   <div [hidden]="!hasCameras" class="flexBox column centerVertical center">
-    <zxing-scanner #scanner start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+    <zxing-scanner #scanner start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)" [autofocusEnabled]="true"></zxing-scanner>
     <h2 *ngIf="!this.selectedDevice">No se ha seleccionado ninguna cámara</h2>
     <div class="flexBox centerVertical">
       <p *ngIf="qrResultString">

@@ -13,8 +13,7 @@
         <app-file-uploader #productImageUploader [url]="uploadProductImageUrl" [singleFile]="true" (onCompleteItem)="imageUploaded($event,true)"></app-file-uploader>
       </div>
       <div >
-        <h1 *ngIf="!isProductReward">TABLA DE ALIMENTACIÓN</h1>
-        <h1 *ngIf="isProductReward">IMAGEN ADICIONAL</h1>
+        <h1>IMAGEN ADICIONAL</h1>
         <app-file-uploader #productFeedingChartImageUploader [url]="uploadFeedingChartImageUrl" [singleFile]="true" (onCompleteItem)="imageUploaded($event,false)"></app-file-uploader>
       </div>
       <button mat-raised-button *ngIf="!isEdit && !isProductReward" [disabled]="!isProductValid || !isProductImageValid || !isProductFeedingChartImageValid" (click)="createProduct()">CREAR</button>

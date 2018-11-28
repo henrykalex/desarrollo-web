@@ -8,8 +8,8 @@ var hashPassword = helper.hashPassword;
 
 var userSchema = new Schema(Object.assign({},userBase,{
   // phone: String,
-  petName: String,
-  petBreed: String,
+  phone: String,
+  country: String,
   veterinariesLinked: [{type: ObjectId, ref:'Veterinary'}],
 }));
 

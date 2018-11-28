@@ -10,12 +10,12 @@ var productSchema = new Schema({
     required: true,
     validate: {
       validator: function(v) {
-        return ['small','size','all','client'].includes(v);
+        return ['home','coucine','bathroom','room'].includes(v);
       },
       message: '{VALUE} no es un sector válido!'
     }
   },
-  nutritional: String,
+  characteristics: String,
   presentations: String,
   feedingChartImage: String,
   image: String,

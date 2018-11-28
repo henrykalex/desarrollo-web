@@ -22,7 +22,7 @@ export class UserComponent extends SideMenuBase implements OnInit {
     super(media,changeDetectorRef);
     this.menuLinks = [
       {name:'MI PERFIL',link:'/perfil'},
-      {name:'VETERINARIOS IRONDOG',link:'/veterinarios'},
+      {name:'TIENDAS ',link:'/tiendas'},
       {name:'PRODUCTOS',link:'/productos'},
       {name:'CANJEO DE PUNTOS',link:'/productos-recompensa'},
       {name:'ÓRDENES A PROVEEDORES',link:'/ordenes'},

@@ -22,7 +22,7 @@ export class AdminComponent extends SideMenuBase implements OnInit  {
     super(media,changeDetectorRef);
     this.menuLinks = [
       {name:'ALMACENES',link:'/admin/distribuidores'},
-      {name:'VETERINARIOS',link:'/admin/veterinarios'},
+      {name:'TIENDAS',link:'/admin/tiendas'},
       {name:'CLIENTES',link:'/admin/clientes'},
       {name:'PRODUCTOS',link:'/admin/productos'},
       {name:'PRODUCTOS RECOMPENSA',link:'/admin/productos-recompensa'},

@@ -21,21 +21,21 @@
           <button mat-button *ngIf="isProfile" (click)="editUser()">EDITAR PERFIL</button>
           <button mat-button *ngIf="isMaster" (click)="editUser()">EDITAR
             <ng-container *ngIf="userDisplayType=='distributor'">DISTRIBUIDOR</ng-container>
-            <ng-container *ngIf="userDisplayType=='veterinary'">VETERINARIO</ng-container>
+            <ng-container *ngIf="userDisplayType=='veterinary'">TIENDA</ng-container>
             <ng-container *ngIf="userDisplayType=='client'">CLIENTE</ng-container>
           </button>
           <button mat-button class="orange" *ngIf="isMaster" (click)="deleteUser()">ELIMINAR
             <ng-container *ngIf="userDisplayType=='distributor'">DISTRIBUIDOR</ng-container>
-            <ng-container *ngIf="userDisplayType=='veterinary'">VETERINARIO</ng-container>
+            <ng-container *ngIf="userDisplayType=='veterinary'">TIENDA</ng-container>
             <ng-container *ngIf="userDisplayType=='client'">CLIENTE</ng-container>
           </button>
           <ng-container *ngIf="isMaster || isProfile">
-            <button mat-button *ngIf="userDisplayType=='distributor' || userDisplayType=='client'" (click)="openLinkUser('veterinarios')">AFILIAR VETERINARIO</button>
+            <button mat-button *ngIf="userDisplayType=='distributor' || userDisplayType=='client'" (click)="openLinkUser('tiendas')">AFILIAR TIENDA</button>
             <button mat-button *ngIf="userDisplayType=='veterinary'" (click)="openLinkUser('clientes')">AFILIAR CLIENTE</button>
             <button mat-button *ngIf="userDisplayType=='veterinary'" (click)="openLinkUser('distribuidores')">AFILIAR DISTRIBUIDOR</button>
           </ng-container>
           <ng-container *ngIf="!isMaster && !isProfile">
-            <button mat-button *ngIf="userDisplayType=='veterinary' && !isMaster" (click)="unlinkUser('veterinarios')">DESAFILIAR VETERINARIO</button>
+            <button mat-button *ngIf="userDisplayType=='veterinary' && !isMaster" (click)="unlinkUser('tiendas')">DESAFILIAR TIENDA</button>
             <button mat-button *ngIf="userDisplayType=='client' && !isMaster" (click)="unlinkUser('clientes')">DESAFILIAR CLIENTE</button>
             <button mat-button *ngIf="userDisplayType=='distributor' && !isMaster" (click)="unlinkUser('distribuidores')">DESAFILIAR DISTRIBUIDOR</button>
           </ng-container>
@@ -71,13 +71,13 @@
     </div>
     <div class="tableContainer" *ngIf="(userDisplayType=='distributor' || userDisplayType=='client') && this.isMaster">
       <div class="tableHeader flexBox space centerVertical">
-        <h2>VETERINARIOS AFILIADOS</h2>
+        <h2>TIENDAS AFILIADOS</h2>
       </div>
       <app-table
       [viewButton]="true"
       [sourceFunction]="veterinariesTableFunction"
       [columns]="columns"
-      (onItemClick)="viewUserModel('veterinario',$event)"></app-table>
+      (onItemClick)="viewUserModel('tienda',$event)"></app-table>
     </div>
     <div class="tableContainer" *ngIf="userDisplayType=='veterinary' && this.isMaster">
       <div class="tableHeader flexBox space centerVertical">

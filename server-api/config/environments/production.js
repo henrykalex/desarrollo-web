@@ -10,7 +10,7 @@ module.exports = {
     undefined,
     'https://admin.home-products.com',
     'https://distribuidor.home-products.com',
-    'https://veterinario.home-products.com',
+    'https://tiend.home-products.com',
     'https://cliente.home-products.com',
     'https://www.home-products.com',
     'https://home-products.com',

@@ -25,9 +25,9 @@ const routes: Routes = [
         path: '',
         // canActivateChild: [AuthGuard],
         children: [
-        { path: '',   redirectTo: 'veterinarios', pathMatch: 'full' },
-        { path: 'veterinarios', component: UserModelsComponent, data: {type: 'veterinary'} },
-        { path: 'ver/veterinario/:id', component: UserModelViewComponent, data: {type: 'veterinary'} },
+        { path: '',   redirectTo: 'tiendas', pathMatch: 'full' },
+        { path: 'tiendas', component: UserModelsComponent, data: {type: 'veterinary'} },
+        { path: 'ver/tienda/:id', component: UserModelViewComponent, data: {type: 'veterinary'} },
 
         { path: 'ordenes', component: OrdersRequestsComponent, data: {type: 'order'} },
         { path: 'orden', component: OrderNewComponent },
@@ -39,7 +39,7 @@ const routes: Routes = [
 
         { path: 'estadisticas', component: StatsComponent },
 
-        { path: 'escaner/veterinarios', component: LinkUserComponent, data: {type: 'veterinary'} },
+        { path: 'escaner/tiendas', component: LinkUserComponent, data: {type: 'veterinary'} },
 
         { path: 'perfil', component: UserModelViewComponent, data: {type: 'client'} },
         ]

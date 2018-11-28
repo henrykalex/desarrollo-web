@@ -29,11 +29,11 @@
         </div>
         <div class="info flexBox space"*ngIf="(loginType=='distributor'&& displayType=='request')||(loginType=='client'&& displayType=='order')">
           <div class="leftColumn">
-            <span>VETERINARIO:</span>
+            <span>TIENDA:</span>
           </div>
           <div class="rightColumn">
             <span>{{orderValues?.veterinaryId?.name}}</span>
-            <button mat-button (click)="openUserModel('veterinario',orderValues?.veterinaryId?._id)">VER</button>
+            <button mat-button (click)="openUserModel('tienda',orderValues?.veterinaryId?._id)">VER</button>
           </div>
         </div>
         <div class="info flexBox space"*ngIf="(loginType=='veterinary'&&displayType=='order')||(loginType=='master'&&displayType=='request')">

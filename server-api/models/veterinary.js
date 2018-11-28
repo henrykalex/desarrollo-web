@@ -11,7 +11,6 @@ var veterinarySchema = new Schema(Object.assign({},userBase,{
   legalUserName: String,
   shippingAddress: addressInterface,
   phone: String,
-  location: [Number],
   distributorsLinked: [{type: ObjectId, ref:'Distributor'}],
   usersLinked: [{type: ObjectId, ref:'User'}],
 }));

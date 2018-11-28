@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad{
     console.log("checkLogin",type);
     if(type=='admin')
     type = 'master';
-    if(type=='veterinario')
+    if(type=='tienda')
     type = 'veterinary';
     if(type=='distribuidor')
     type = 'distributor';

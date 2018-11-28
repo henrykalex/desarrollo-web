@@ -1,7 +1,7 @@
 <div class="pageContainer">
   <div class="pageHeader flexBox center centerVertical column">
     <h1 *ngIf="userDisplayType=='distributor'">ALMACENES</h1>
-    <h1 *ngIf="userDisplayType=='veterinary'">VETERINARIOS</h1>
+    <h1 *ngIf="userDisplayType=='veterinary'">TIENDAS</h1>
     <h1 *ngIf="userDisplayType=='client'">CLIENTES</h1>
   </div>
   <div class="bannerContainer" [ngClass]="userDisplayType">
@@ -11,17 +11,17 @@
     <div class="tableContainer">
       <div class="tableHeader flexBox space centerVertical">
         <h2 *ngIf="userDisplayType=='distributor'">ALMACENES</h2>
-        <h2 *ngIf="userDisplayType=='veterinary'">VETERINARIOS</h2>
+        <h2 *ngIf="userDisplayType=='veterinary'">TIENDAS</h2>
         <h2 *ngIf="userDisplayType=='client'">CLIENTES</h2>
 
         <button class="light" mat-raised-button *ngIf="authService.isMaster" [routerLink]="'../'+getUserLink()">
           <ng-container *ngIf="userDisplayType=='distributor'">CREAR DISTRIBUIDOR</ng-container>
-          <ng-container *ngIf="userDisplayType=='veterinary'">CREAR VETERINARIO</ng-container>
+          <ng-container *ngIf="userDisplayType=='veterinary'">CREAR TIENDA</ng-container>
           <ng-container *ngIf="userDisplayType=='client'">CREAR CLIENTE</ng-container>
 
         </button>
         <button class="light" mat-raised-button *ngIf="!authService.isMaster && userDisplayType=='distributor'" (click)="openLinkUser('distribuidores')">AFILIAR DISTRIBUIDOR</button>
-        <button class="light" mat-raised-button *ngIf="!authService.isMaster && userDisplayType=='veterinary'" (click)="openLinkUser('veterinarios')">AFILIAR VETERINARIO</button>
+        <button class="light" mat-raised-button *ngIf="!authService.isMaster && userDisplayType=='veterinary'" (click)="openLinkUser('tiendas')">AFILIAR TIENDA</button>
         <button class="light" mat-raised-button *ngIf="!authService.isMaster && userDisplayType=='client'" (click)="openLinkUser('clientes')">AFILIAR CLIENTE</button>
       </div>
       <app-table
@@ -33,7 +33,7 @@
     <div class="tableContainer" *ngIf="authService.isMaster && userDisplayType!='client'">
       <div class="tableHeader flexBox space centerVertical">
         <h2 *ngIf="userDisplayType=='distributor'">SOLICITUDES DE ALMACENES</h2>
-        <h2 *ngIf="userDisplayType=='veterinary'">SOLICITUDES DE VETERINARIOS</h2>
+        <h2 *ngIf="userDisplayType=='veterinary'">SOLICITUDES DE TIENDAS</h2>
       </div>
       <app-table
       [viewButton]="true"

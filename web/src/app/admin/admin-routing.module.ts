@@ -29,19 +29,19 @@ const routes: Routes = [
         children: [
         { path: '',   redirectTo: 'distribuidores', pathMatch: 'full' },
         { path: 'distribuidores', component: UserModelsComponent, data: {type: 'distributor'} },
-        { path: 'veterinarios', component: UserModelsComponent, data: {type: 'veterinary'} },
+        { path: 'tiendas', component: UserModelsComponent, data: {type: 'veterinary'} },
         { path: 'clientes', component: UserModelsComponent, data: {type: 'client'} },
 
         { path: 'distribuidor', component: UserModelAddComponent, data: {type: 'distributor'} },
-        { path: 'veterinario', component: UserModelAddComponent, data: {type: 'veterinary'} },
+        { path: 'tienda', component: UserModelAddComponent, data: {type: 'veterinary'} },
         { path: 'cliente', component: UserModelAddComponent, data: {type: 'client'} },
 
         { path: 'distribuidor/:id', component: UserModelViewComponent, data: {type: 'distributor'} },
-        { path: 'veterinario/:id', component: UserModelViewComponent, data: {type: 'veterinary'} },
+        { path: 'tienda/:id', component: UserModelViewComponent, data: {type: 'veterinary'} },
         { path: 'cliente/:id', component: UserModelViewComponent, data: {type: 'client'} },
 
         { path: 'escaner/distribuidores', component: LinkUserComponent, data: {type: 'distributor'} },
-        { path: 'escaner/veterinarios', component: LinkUserComponent, data: {type: 'veterinary'} },
+        { path: 'escaner/tiendas', component: LinkUserComponent, data: {type: 'veterinary'} },
         { path: 'escaner/clientes', component: LinkUserComponent, data: {type: 'client'} },
 
         { path: 'productos', component: ProductsComponent },

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.loginType =
       urlType == 'master'?'master':
       urlType == 'distribuidor'?'distributor':
-      urlType == 'veterinario'?'veterinary':
+      urlType == 'tienda'?'veterinary':
       '';
       if(AppConfig.isProduction){
         let hostname = this.windowRef.location.hostname;
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.loginType =
         subdomain == 'admin'?'master':
         subdomain == 'distribuidor'?'distributor':
-        subdomain == 'veterinario'?'veterinary':
+        subdomain == 'tienda'?'veterinary':
         subdomain == 'cliente'?'':null;
         console.log("loginType",this.loginType);
         if(this.loginType === null)
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         response.type==LoginType.DISTRIBUTOR?
         this.router.navigate(['distribuidor']):
         response.type==LoginType.VETERINARY?
-        this.router.navigate(['veterinario']):
+        this.router.navigate(['tienda']):
         null;
       }else{
         this.processError({status: -1});

@@ -20,7 +20,7 @@
         <div class="buttons flexBox column space startVertical">
           <button mat-button>EDITAR PERFIL</button>
           <button mat-button class="orange">ELIMINAR CUENTA</button>
-          <button mat-button *ngIf="userDisplayType=='distributor' || userDisplayType=='client'" (click)="openLinkUser('veterinarios')">AFILIAR VETERINARIO</button>
+          <button mat-button *ngIf="userDisplayType=='distributor' || userDisplayType=='client'" (click)="openLinkUser('tiendas')">AFILIAR TIENDA</button>
           <button mat-button *ngIf="userDisplayType=='veterinary'" (click)="openLinkUser('clientes')">AFILIAR CLIENTE</button>
           <button mat-button *ngIf="userDisplayType=='veterinary'" (click)="openLinkUser('distribuidores')">AFILIAR DISTRIBUIDOR</button>
           <!-- <button mat-button>:D</button> -->
@@ -53,7 +53,7 @@
     </div>
     <div class="tableContainer" *ngIf="userDisplayType=='distributor' || userDisplayType=='client'">
       <div class="tableHeader flexBox space centerVertical">
-        <h2>VETERINARIOS AFILIADOS</h2>
+        <h2>TIENDAS AFILIADOS</h2>
       </div>
       <app-table
       [viewButton]="true"

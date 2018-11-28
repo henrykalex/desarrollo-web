@@ -21,14 +21,14 @@ export class VeterinaryComponent extends SideMenuBase implements OnInit {
   ) {
     super(media,changeDetectorRef);
     this.menuLinks = [
-      {name:'MI PERFIL',link:'/veterinario/perfil'},
-      {name:'CLIENTES IRONDOG',link:'/veterinario/clientes'},
-      {name:'ALMACENES IRONDOG',link:'/veterinario/distribuidores'},
-      {name:'ÓRDENES A PROVEEDORES',link:'/veterinario/ordenes'},
-      {name:'PRODUCTOS',link:'/veterinario/productos'},
-      {name:'CANJEO DE PUNTOS',link:'/veterinario/productos-recompensa'},
-      {name:'SOLICITUDES DE CLIENTES',link:'/veterinario/pedidos'},
-      {name:'SALIR',link:'/veterinario/iniciar'}
+      {name:'MI PERFIL',link:'/tienda/perfil'},
+      {name:'CLIENTES ',link:'/tienda/clientes'},
+      {name:'ALMACENES ',link:'/tienda/distribuidores'},
+      {name:'ÓRDENES A PROVEEDORES',link:'/tienda/ordenes'},
+      {name:'PRODUCTOS',link:'/tienda/productos'},
+      {name:'CANJEO DE PUNTOS',link:'/tienda/productos-recompensa'},
+      {name:'SOLICITUDES DE CLIENTES',link:'/tienda/pedidos'},
+      {name:'SALIR',link:'/tienda/iniciar'}
     ];
     this.userName = this.authService.userName;
   }
